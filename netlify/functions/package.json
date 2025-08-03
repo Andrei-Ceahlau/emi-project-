@@ -1,0 +1,12 @@
+{
+  "name": "netlify-functions",
+  "version": "1.0.0",
+  "description": "Netlify Functions for webinar email automation",
+  "main": "send-webinar-email.js",
+  "dependencies": {
+    "nodemailer": "^6.9.7"
+  },
+  "devDependencies": {
+    "@types/nodemailer": "^6.4.14"
+  }
+} 
