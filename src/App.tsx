@@ -231,7 +231,7 @@ function App() {
                   onClick={() => document.getElementById('comanda')?.scrollIntoView({ behavior: 'smooth' })}
                   className="bg-green-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
                 >
-                  Comandă acum
+                  Comandă telefonic
                 </button>
                 <button 
                   onClick={() => document.getElementById('produse')?.scrollIntoView({ behavior: 'smooth' })}
@@ -323,8 +323,12 @@ function App() {
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">{product.name}</h3>
                   <p className="text-gray-600 mb-4">{product.description}</p>
                   <div className="flex justify-center">
-                    <button className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors">
-                      Comandă
+                    <button 
+                      onClick={() => window.location.href = 'tel:+40722123456'}
+                      className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-2"
+                    >
+                      <Phone className="h-4 w-4" />
+                      <span>Comandă telefonic</span>
                     </button>
                   </div>
                 </div>
@@ -441,89 +445,75 @@ function App() {
             </p>
           </div>
           <div className="bg-green-50 rounded-2xl p-8">
-            <form onSubmit={handleFormSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    Nume complet *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                    placeholder="Introduceți numele complet"
-                  />
+            <div className="text-center space-y-6">
+              <div className="mb-8">
+                <div className="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Phone className="h-10 w-10 text-green-600" />
                 </div>
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                    Telefon *
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                    placeholder="0722123456"
-                  />
-                </div>
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                  placeholder="email@exemplu.com"
-                />
-              </div>
-              <div>
-                <label htmlFor="product" className="block text-sm font-medium text-gray-700 mb-2">
-                  Produs dorit
-                </label>
-                <select
-                  id="product"
-                  name="product"
-                  value={formData.product}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                >
-                  <option value="">Selectează un produs</option>
-                  {products.map((product) => (
-                    <option key={product.id} value={product.name}>
-                      {product.name}
-                    </option>
-                  ))}
-                </select>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  Comandă telefonică
+                </h3>
+                <p className="text-gray-600 text-lg">
+                  Pentru a comanda produsele Forever Living, contactează-ne telefonic
+                </p>
               </div>
               
-              {/* Consimțământ pentru prelucrarea datelor */}
-              <DataProcessingConsent 
-                onConsentChange={handleDataProcessingConsentChange}
-                initialConsents={dataProcessingConsents}
-              />
+              <div className="bg-white rounded-xl p-6 shadow-lg">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-center space-x-3">
+                    <Phone className="h-6 w-6 text-green-600" />
+                    <span className="text-xl font-semibold text-gray-900">+40 722 123 456</span>
+                  </div>
+                  <div className="flex items-center justify-center space-x-3">
+                    <Mail className="h-6 w-6 text-green-600" />
+                    <span className="text-lg text-gray-700">comenzi@forever-living.ro</span>
+                  </div>
+                  <div className="flex items-center justify-center space-x-3">
+                    <Clock className="h-6 w-6 text-green-600" />
+                    <span className="text-lg text-gray-700">Luni-Vineri: 9:00-18:00</span>
+                  </div>
+                </div>
+              </div>
               
-              <div className="text-center">
+              <div className="space-y-4">
+                <div className="bg-blue-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-blue-800 mb-2">Avantajele comenzii telefonice:</h4>
+                  <ul className="text-blue-700 space-y-1">
+                    <li>• Consultanță personalizată pentru produse</li>
+                    <li>• Recomandări adaptate nevoilor tale</li>
+                    <li>• Răspunsuri la întrebări în timp real</li>
+                    <li>• Procesare rapidă a comenzii</li>
+                  </ul>
+                </div>
+                
+                <div className="bg-amber-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-amber-800 mb-2">Informații necesare pentru comandă:</h4>
+                  <ul className="text-amber-700 space-y-1">
+                    <li>• Numele și prenumele</li>
+                    <li>• Adresa de livrare</li>
+                    <li>• Produsele dorite</li>
+                    <li>• Metoda de plată preferată</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button
-                  type="submit"
-                  className="bg-green-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                  onClick={() => window.location.href = 'tel:+40722123456'}
+                  className="bg-green-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-green-700 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2"
                 >
-                  Trimite comanda
+                  <Phone className="h-5 w-5" />
+                  <span>Sună acum</span>
+                </button>
+                <button
+                  onClick={() => window.location.href = 'mailto:comenzi@forever-living.ro'}
+                  className="border-2 border-green-600 text-green-600 px-8 py-4 rounded-xl font-semibold hover:bg-green-50 transition-all duration-300 flex items-center justify-center space-x-2"
+                >
+                  <Mail className="h-5 w-5" />
+                  <span>Trimite email</span>
                 </button>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </section>
